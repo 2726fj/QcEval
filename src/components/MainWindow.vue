@@ -5,7 +5,7 @@
     </el-dialog>
     <div class="card">
       <el-icon class="icon" @click="dialogTableVisible = true">
-        <QuestionFilled />
+        <QuestionFilled style="height: 100px; width: 100px;"/>
       </el-icon>
       <div class="left">
         <p
@@ -27,15 +27,15 @@
             placeholder="Please enter generateData when about to evaluate." />
         </div>
         <div class="fake" style="height: 2%;"></div>
-        <div class="input" onclick="hiddenFileInput.click()">Import</div>
+        <div class="input" onclick="hiddenFileInput.click()">Import generateData from local file</div>
         <div class="fake" style="height: 2%;"></div>
         <div class="param">
           <button class="download" @click="download()" :disabled="isDisable" v-loading="loading">Search</button>
           <div class="fake" style="width: 10%;"></div>
-          <button class="download" @click="evaluteData()" :disabled="isDisable" v-loading="loading">Evalute</button>
+          <button class="download" @click="evaluteData()" :disabled="isDisable" v-loading="loading">Evaluate</button>
         </div>
         <div class="fake" style="height: 2%;"></div>
-        <div class="download" @click="exportData()">Export</div>
+        <div class="download" @click="exportData()">Download</div>
         <div class="fake" style="height: 2%;"></div>
       </div>
     </div>
@@ -49,7 +49,6 @@
     </div>
     <div class="borderBox"></div>
     <input type="file" name="hiddenFileInput" id="hiddenFileInput" style="display: none;" />
-
   </div>
 </template>
 
@@ -72,7 +71,7 @@ function download() {
   if (!(nps && nps[0] && nps[1] && inp3.value != null)) {
     ElMessage({
       showClose: true,
-      message: "请设置全部参数！",
+      message: "Please set all parameters!",
       type: "error",
     });
     return;
@@ -86,14 +85,14 @@ function download() {
     if (!res || res.length == 0 || JSON.stringify(res) == "{}") {
       ElMessage({
         showClose: true,
-        message: "请求成功！无当前种类数据集",
+        message: "Request successful! No current dataset of this type",
         type: "warning",
       });
       return;
     }
     ElMessage({
       showClose: true,
-      message: "请求成功！",
+      message: "Request successful!",
       type: "success",
     });
     tableData.value = res;
@@ -104,7 +103,7 @@ function exportData() {
   if (!data || data.length == 0 || JSON.stringify(data) == "{}") {
     ElMessage({
       showClose: true,
-      message: "数据为空，无法导出！",
+      message: "Data is empty, cannot export!",
       type: "error",
     }); return;
   }
@@ -126,21 +125,21 @@ function evaluteData() {
     } catch (errors) {
       ElMessage({
         showClose: true,
-        message: "JSON格式解析失败，请输入JSON数据！",
+        message: "Failed to parse JSON, please enter JSON data!",
         type: "error",
       });
       return;
     }
     ElMessage({
       showClose: true,
-      message: "检测到输入，优先使用输入数据",
+      message: "Detected input, using input data as priority",
       type: "success",
     });
   }
   if (!(nps && nps[0] && nps[1] && inp3.value != null) || (!data || data.length == 0 || JSON.stringify(data) == "{}")) {
     ElMessage({
       showClose: true,
-      message: "请设置全部参数！",
+      message: "Please set all parameters!",
       type: "error",
     });
     return;
@@ -152,7 +151,7 @@ function evaluteData() {
       if (!('result' in element || 'prompt' in element) && 'task_id' in element) {
         ElMessage({
           showClose: true,
-          message: "参数类型不正确！",
+          message: "Incorrect parameter type!",
           type: "error",
         });
         f = false;
@@ -162,7 +161,7 @@ function evaluteData() {
   } else {
     ElMessage({
       showClose: true,
-      message: "请输入Array！",
+      message: "Please enter an Array!",
       type: "error",
     });
     f = false;
@@ -187,7 +186,7 @@ function evaluteData() {
     isDisable.value = false
     ElMessage({
       showClose: true,
-      message: "结果已保存到evaluteResult.json",
+      message: "Results saved to evaluteResult.json",
       type: "success",
     });
     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(res, null, 2));
@@ -207,7 +206,7 @@ onMounted(() => {
       if (file.type.match('application/json')) {
         var reader = new FileReader();
         reader.onload = function (e) {
-          var jsonFile = JSON.parse(e.target.result).generateData;
+          var jsonFile = JSON.parse(e.target.result);
           let generateData = []
           jsonFile.forEach(element => {
             generateData.push({ task_id: element.task_id, prompt: JSON.stringify(element.result) })
@@ -222,7 +221,7 @@ onMounted(() => {
             if (flag) {
               ElMessage({
                 showClose: true,
-                message: "导入成功！",
+                message: "Import successful!",
                 type: "success",
               });
               tableData.value = generateData;
@@ -231,7 +230,7 @@ onMounted(() => {
           }
           ElMessage({
             showClose: true,
-            message: "格式不正确，导入失败！",
+            message: "Incorrect format, import failed!",
             type: "error",
           });
         };
@@ -239,14 +238,15 @@ onMounted(() => {
       } else {
         ElMessage({
           showClose: true,
-          message: "请选择一个JSON文件",
+          message: "Please select a JSON file",
           type: "error",
         });
       }
     } else {
       ElMessage({
         showClose: true,
-        message: "未选择文件",
+        message: "No file selected",
+       
         type: "warning",
       });
     }

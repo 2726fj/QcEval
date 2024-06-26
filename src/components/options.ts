@@ -278,8 +278,8 @@ export const options = [
     ],
   },
   {
-    value: "CrossCodeEval",
-    label: "CrossCodeEval",
+    value: "CRUXEval",
+    label: "CRUXEval",
     children: [
       {
         value: "python",
@@ -288,8 +288,8 @@ export const options = [
     ],
   },
   {
-    value: "CRUXEval",
-    label: "CRUXEval",
+    value: "CrossCodeEval",
+    label: "CrossCodeEval",
     children: [
       {
         value: "python",

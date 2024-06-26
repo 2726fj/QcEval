@@ -1,25 +1,27 @@
 import axios from "axios";
 import { ElMessage } from "element-plus";
-axios.defaults.timeout = 10000000; // 超时时间
-axios.defaults.baseURL = "http://127.0.0.1:8080/"; // http://127.0.0.1:4523/m1/3898618-0-default"; //"http://127.0.0.1:8080";
-// 数据格式转换
+
+axios.defaults.timeout = 10000000; // Timeout duration
+axios.defaults.baseURL = "http://10.249.45.133:8080/"; // Base URL
+
+// Data format conversion
 axios.defaults.transformRequest = function (data) {
   data = JSON.stringify(data);
   return data;
 };
 
-// 路由请求拦截
+// Request interceptor
 axios.interceptors.request.use(
   (config) => {
     config.headers["Content-Type"] = "application/json;charset=UTF-8";
     try {
-      // 设置前端token
+      // Set front-end token
       const token = localStorage.getItem("token");
       if (token && token !== "") {
         config.headers["token"] = token;
       }
     } catch {
-      console.log("error put token");
+      console.log("Failed to set token");
     }
     return config;
   },
@@ -27,7 +29,8 @@ axios.interceptors.request.use(
     return Promise.reject(error.response);
   }
 );
-// 路由响应拦截
+
+// Response interceptor
 axios.interceptors.response.use(
   (response) => {
     console.log(response, "sss");
@@ -45,10 +48,10 @@ axios.interceptors.response.use(
     if (error.response) {
       switch (error.response.status) {
         case 400:
-          error.message = `错误请求`;
+          error.message = `Bad request`;
           break;
         case 401:
-          error.message = `未授权，请重新登录`;
+          error.message = `Unauthorized, please log in again`;
           break;
       }
     } else if (error.request) {
@@ -61,7 +64,8 @@ axios.interceptors.response.use(
       message: error.message,
       type: "error",
     });
-    return Promise.reject(error.response); // 返回接口返回的错误信息
+    return Promise.reject(error.response); // Return the error information returned by the interface
   }
 );
+
 export default axios;
