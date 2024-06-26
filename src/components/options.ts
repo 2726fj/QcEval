@@ -1,134 +1,126 @@
 const op2 = [
   {
     value: "csharp",
-    label: "csharp",
+    label: "Csharp",
   },
   {
     value: "go",
-    label: "go",
-  },
-  {
-    value: "java",
-    label: "java",
+    label: "Go",
   },
   {
     value: "javascript",
-    label: "javascript",
+    label: "JavaScript",
   },
   {
     value: "kotlin",
-    label: "kotlin",
+    label: "Kotlin",
   },
   {
     value: "perl",
-    label: "perl",
+    label: "Perl",
   },
   {
     value: "php",
-    label: "php",
+    label: "Php",
   },
   {
     value: "ruby",
-    label: "ruby",
+    label: "Ruby",
   },
   {
     value: "scala",
-    label: "scala",
+    label: "Scala",
   },
   {
     value: "swift",
-    label: "swift",
+    label: "Swift",
   },
   {
     value: "typescript",
-    label: "typescript",
+    label: "Typescript",
   },
 ];
 const op1 = [
   {
     value: "cpp",
-    label: "cpp",
+    label: "CPP",
   },
   {
-    value: "csharp",
-    label: "csharp",
+    value: "cs",
+    label: "Csharp",
   },
   {
     value: "elixir",
-    label: "elixir",
+    label: "Elixir",
   },
   {
     value: "d",
-    label: "d",
+    label: "D",
   },
   {
-    value: "go",
-    label: "go",
+    value: "go_test.go",
+    label: "Go",
   },
   {
-    value: "haskell",
-    label: "haskell",
+    value: "hs",
+    label: "Haskell",
   },
   {
     value: "java",
-    label: "java",
+    label: "Java",
   },
   {
-    value: "julia",
-    label: "julia",
+    value: "jl",
+    label: "Julia",
+  },
+  {
+    value: "js",
+    label: "JavaScript",
   },
   {
     value: "lua",
-    label: "lua",
-  },
-  {
-    value: "meta-language",
-    label: "meta-language",
+    label: "Lua",
   },
   {
     value: "php",
-    label: "php",
+    label: "Php",
   },
   {
-    value: "perl",
-    label: "perl",
+    value: "pl",
+    label: "Perl",
   },
   {
-    value: "python",
-    label: "python",
+    value: "rb",
+    label: "Ruby",
   },
   {
-    value: "R",
+    value: "r",
     label: "R",
   },
   {
-    value: "ruby",
-    label: "ruby",
+    value: "rkt",
+    label: "Racket",
   },
   {
-    value: "racket",
-    label: "racket",
-  },
-  {
-    value: "rust",
-    label: "rust",
+    value: "rs",
+    label: "Rust",
   },
   {
     value: "scala",
-    label: "scala",
+    label: "Scala",
   },
   {
-    value: "bash",
-    label: "bash",
+    value: "sh",
+    label: "Shell",
   },
   {
     value: "swift",
-    label: "swift",
+    label: "Swift",
   },
   {
-    value: "typescript",
-    label: "typescript",
-  },
+    value: "ts",
+    label: "Typescript",
+  }
 ];
 export const options = [
   {
@@ -137,27 +129,69 @@ export const options = [
     children: [
       {
         value: "python",
-        label: "python",
+        label: "Python",
       },
     ],
   },
   {
-    value: "HumanEval",
-    label: "HumanEval",
+    value: "humaneval",
+    label: "humaneval",
     children: [
       {
         value: "python",
-        label: "python",
+        label: "Python",
       },
     ],
   },
   {
-    value: "MBPP",
-    label: "MBPP",
+    value: "humaneval-x",
+    label: "humaneval-x",
     children: [
       {
+        value: "java",
+        label: "Java",
+      },
+      {
         value: "python",
-        label: "python",
+        label: "Python",
+      },
+      {
+        value: "CPP",
+        label: "CPP",
+      },
+      {
+        value: "Go",
+        label: "Go",
+      },
+      {
+        value: "JavaScript",
+        label: "JavaScript",
+      },
+    ],
+  },
+  {
+    value: "huamaneval-pack",
+    label: "huamaneval-pack",
+    children: [
+      {
+        value: "CPP",
+        label: "CPP",
+      },
+      {
+        value: "Go",
+        label: "Go",
+      },
+      {
+        value: "Java",
+        label: "Java",
+      },
+      {
+        value: "JavaScript",
+        label: "JavaScript",
+      },
+      {
+        value: "Rust",
+        label: "Rust",
       },
     ],
   },
@@ -167,123 +201,101 @@ export const options = [
     children: op1,
   },
   {
-    value: "multipl-mbpp",
-    label: "multipl-mbpp",
-    children: op1,
+    value: "HumanEval+",
+    label: "HumanEval+",
+    children: [
+      {
+        value: "Python",
+        label: "Python",
+      },
+    ],
   },
   {
-    value: "MBXP-humaneval",
-    label: "MBXP-humaneval",
-    children: op2,
+    value: "mbpp",
+    label: "mbpp",
+    children: [
+      {
+        value: "python",
+        label: "Python",
+      },
+    ],
+  },
+  {
+    value: "MBPP+",
+    label: "MBPP+",
+    children: [
+      {
+        value: "Python",
+        label: "Python",
+      },
+    ],
   },
   {
     value: "MBXP",
     label: "MBXP",
-    children: op2,
-  },
-  {
-    value: "DS-1000",
-    label: "DS-1000",
     children: [
       {
-        value: "python",
-        label: "python",
-      },
-    ],
-  },
-  {
-    value: "ODEX",
-    label: "ODEX",
-    children: [
-      {
-        value: "python",
-        label: "python",
-      },
-    ],
-  },
-  {
-    value: "humaneval+",
-    label: "humaneval+",
-    children: [
-      {
-        value: "python",
-        label: "python",
-      },
-    ],
-  },
-  {
-    value: "mbpp+",
-    label: "mbpp+",
-    children: [
-      {
-        value: "python",
-        label: "python",
-      },
-    ],
-  },
-  {
-    value: "humaneval-x",
-    label: "humaneval-x",
-    children: [
-      {
-        value: "python",
-        label: "python",
+        value: "cpp",
+        label: "CPP",
       },
       {
-        value: "java",
-        label: "java",
-      },
-      {
-        value: "javascript",
-        label: "javascript",
+        value: "csharp",
+        label: "Csharp",
       },
       {
         value: "go",
-        label: "go",
-      },
-      {
-        value: "cpp",
-        label: "cpp",
-      },
-    ],
-  },
-  {
-    value: "humaneval-pack",
-    label: "humaneval-pack",
-    children: [
-      {
-        value: "python",
-        label: "python",
+        label: "Go",
       },
       {
         value: "java",
-        label: "java",
+        label: "Java",
       },
       {
         value: "javascript",
-        label: "javascript",
+        label: "JavaScript",
       },
       {
-        value: "go",
-        label: "go",
+        value: "kotlin",
+        label: "Kotlin",
       },
       {
-        value: "cpp",
-        label: "cpp",
+        value: "perl",
+        label: "Perl",
       },
       {
-        value: "rust",
-        label: "rust",
+        value: "php",
+        label: "Php",
+      },
+      {
+        value: "ruby",
+        label: "Ruby",
+      },
+      {
+        value: "scala",
+        label: "Scala",
+      },
+      {
+        value: "swift",
+        label: "Swift",
+      },
+      {
+        value: "typescript",
+        label: "Typescript",
       },
     ],
   },
   {
-    value: "CRUXEval",
-    label: "CRUXEval",
+    value: "multipl-MBPP",
+    label: "multipl-MBPP",
+    children: op1,
+  },
+  {
+    value: "odex",
+    label: "odex",
     children: [
       {
         value: "python",
-        label: "python",
+        label: "Python",
       },
     ],
   },
@@ -292,34 +304,59 @@ export const options = [
     label: "CrossCodeEval",
     children: [
       {
-        value: "python",
-        label: "python",
+        value: "csharp",
+        label: "Csharp",
       },
       {
-        value: "Java",
+        value: "java",
         label: "Java",
       },
       {
-        value: "TypeScript",
-        label: "TypeScript",
+        value: "python",
+        label: "Python",
       },
       {
-        value: "csharp",
-        label: "csharp",
+        value: "typescript",
+        label: "Typescript",
       },
     ],
   },
   {
-    value: "NaturalCodeBench",
-    label: "NaturalCodeBench",
+    value: "cruxEval",
+    label: "cruxEval",
     children: [
       {
         value: "python",
-        label: "python",
+        label: "Python",
       },
+    ],
+  },
+  {
+    value: "naturalCodeBench",
+    label: "naturalCodeBench",
+    children: [
       {
         value: "java",
-        label: "java",
+        label: "Java",
+      },
+      {
+        value: "python",
+        label: "Python",
+      },
+    ],
+  },
+  {
+    value: "multilingual_humaneval",
+    label: "multilingual_humaneval",
+    children: op2,
+  },
+  {
+    value: "DS-1000",
+    label: "DS-1000",
+    children: [
+      {
+        value: "python",
+        label: "Python",
       },
     ],
   },
