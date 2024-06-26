@@ -88,6 +88,7 @@ function download() {
         message: "Request successful! No current dataset of this type",
         type: "warning",
       });
+      tableData.value = [];
       return;
     }
     ElMessage({
