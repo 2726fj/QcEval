@@ -23,7 +23,7 @@
       <h3>2. Evaluation</h3>
       <ol>
         <li>
-          <strong>First, Select the Dataset Name and Language</strong>.
+          <strong>Select the Dataset Name and Language</strong>.
         </li>
         <li>
           <strong>Input the Data to be Evaluated</strong>. You can enter data through the input box or import it from a local file. The input format is as follows, where <code>task_id</code> corresponds to the <code>task_id</code> in the downloaded dataset, and <code>result</code> is the result inferred by the model using the prompt corresponding to that <code>task_id</code>.
